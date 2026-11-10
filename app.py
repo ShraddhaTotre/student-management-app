@@ -14,11 +14,11 @@ password = '#poonam2124'
 
 
 connection = pymssql.connect(
-    'DRIVER={SQL Server};'
-    'SERVER='+server+';'
-    'DATABASE='+database+';'
-    'UID='+username+';'
-    'PWD='+password
+    server=server,
+    port=1433,
+    user=username,
+    password=password,
+    database=database
 )
 
 
