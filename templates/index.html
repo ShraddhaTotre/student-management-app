@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+Student Registration Portal
+</title>
+
+<link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>
+🎓 Student Registration Portal
+</h1>
+
+
+<p>
+Register your details and join our institute
+</p>
+
+
+
+<form action="/register" method="POST">
+
+
+<input 
+type="text"
+name="name"
+placeholder="Full Name"
+required>
+
+
+<input 
+type="email"
+name="email"
+placeholder="Email Address"
+required>
+
+
+
+<input 
+type="text"
+name="phone"
+placeholder="Phone Number"
+required>
+
+
+
+<select name="course">
+
+<option>
+Select Course
+</option>
+
+<option>
+Information Technology
+</option>
+
+<option>
+Computer Science
+</option>
+
+<option>
+Artificial Intelligence
+</option>
+
+</select>
+
+
+
+<input
+type="text"
+name="city"
+placeholder="City"
+required>
+
+
+<button>
+Register
+</button>
+
+
+</form>
+
+
+<h2>
+Registered Students
+</h2>
+
+
+<table>
+
+
+<tr>
+
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Course</th>
+<th>City</th>
+
+</tr>
+
+
+
+{% for s in students %}
+
+<tr>
+
+<td>{{s.StudentId}}</td>
+
+<td>{{s.FullName}}</td>
+
+<td>{{s.Email}}</td>
+
+<td>{{s.Course}}</td>
+
+<td>{{s.City}}</td>
+
+
+</tr>
+
+{% endfor %}
+
+
+
+</table>
+
+
+</div>
+
+
+</body>
+
+</html>
