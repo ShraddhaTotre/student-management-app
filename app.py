@@ -59,12 +59,9 @@ def register():
 
 
     cursor.execute(
-    """
-    INSERT INTO StudentRegistration
-    (FullName, Email, Phone, Course, City)
-    VALUES (?, ?, ?, ?, ?)
-    """,
-    (name,email,phone,course,city)
+        "INSERT INTO StudentRegistration (FullName, Email, Phone, Course, City) "
+        "VALUES (%s, %s, %s, %s, %s)",
+        (name, email, phone, course, city)
     )
 
 
