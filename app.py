@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import pyodbc
+import pymssql
 
 
 app = Flask(__name__)
@@ -13,7 +13,7 @@ username = 'shraddha'
 password = '#poonam2124'
 
 
-connection = pyodbc.connect(
+connection = pymssql.connect(
     'DRIVER={SQL Server};'
     'SERVER='+server+';'
     'DATABASE='+database+';'
