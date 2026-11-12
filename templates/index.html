@@ -1,145 +1,277 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management Portal</title>
 
-<title>
-Student Registration Portal
-</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-<link rel="stylesheet" href="/static/style.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-
 
 <body>
 
+<!-- ================= NAVBAR ================= -->
 
-<div class="container">
+<nav>
+    <div class="logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+        Student Portal
+    </div>
 
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#register">Register</a></li>
+        <li><a href="#students">Students</a></li>
+    </ul>
+</nav>
 
-<h1>
-🎓 Student Registration Portal
-</h1>
+<!-- ================= HERO ================= -->
 
+<section class="hero">
 
-<p>
-Register your details and join our institute
-</p>
+    <div class="hero-text">
 
+        <h1>Student Management System</h1>
 
+        <p>
+            Manage student records using
+            Flask, Azure SQL Database and
+            Microsoft Azure Cloud.
+        </p>
+
+        <a href="#register" class="btn">
+            Register Student
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ================= DASHBOARD ================= -->
+
+<section class="cards">
+
+    <div class="card">
+
+        <i class="fa-solid fa-users"></i>
+
+        <h2>{{ students|length }}</h2>
+
+        <p>Total Students</p>
+
+    </div>
+
+    <div class="card">
+
+        <i class="fa-solid fa-book-open"></i>
+
+        <h2>8</h2>
+
+        <p>Courses</p>
+
+    </div>
+
+    <div class="card">
+
+        <i class="fa-solid fa-building"></i>
+
+        <h2>Azure</h2>
+
+        <p>Cloud Hosted</p>
+
+    </div>
+
+</section>
+
+<!-- ================= FORM ================= -->
+
+<section class="container" id="register">
+
+<h2 class="title">
+<i class="fa-solid fa-user-plus"></i>
+Register Student
+</h2>
 
 <form action="/register" method="POST">
 
+<div class="row">
 
-<input 
+<div class="input-box">
+<label>Full Name</label>
+
+<input
 type="text"
 name="name"
-placeholder="Full Name"
+placeholder="Enter Full Name"
 required>
 
+</div>
 
-<input 
+<div class="input-box">
+
+<label>Email</label>
+
+<input
 type="email"
 name="email"
-placeholder="Email Address"
+placeholder="Enter Email"
 required>
 
+</div>
 
+</div>
 
-<input 
+<div class="row">
+
+<div class="input-box">
+
+<label>Phone</label>
+
+<input
 type="text"
 name="phone"
 placeholder="Phone Number"
 required>
 
+</div>
 
+<div class="input-box">
+
+<label>Course</label>
 
 <select name="course">
 
-<option>
-Select Course
-</option>
+<option>B.E IT</option>
 
-<option>
-Information Technology
-</option>
+<option>Computer</option>
 
-<option>
-Computer Science
-</option>
+<option>ENTC</option>
 
-<option>
-Artificial Intelligence
-</option>
+<option>Mechanical</option>
+
+<option>Civil</option>
+
+<option>AIML</option>
 
 </select>
 
+</div>
 
+</div>
+
+<div class="row">
+
+<div class="input-box full">
+
+<label>City</label>
 
 <input
 type="text"
 name="city"
-placeholder="City"
+placeholder="Enter City"
 required>
 
+</div>
 
-<button>
-Register
+</div>
+
+<button class="submit-btn">
+<i class="fa-solid fa-paper-plane"></i>
+
+Register Student
+
 </button>
-
 
 </form>
 
+</section>
+
+<!-- ================= TABLE ================= -->
+
+<section class="table-section" id="students">
 
 <h2>
+
+<i class="fa-solid fa-table"></i>
+
 Registered Students
+
 </h2>
 
+<div class="table-container">
 
 <table>
 
+<thead>
 
 <tr>
 
 <th>ID</th>
+
 <th>Name</th>
+
 <th>Email</th>
+
+<th>Phone</th>
+
 <th>Course</th>
+
 <th>City</th>
 
 </tr>
 
+</thead>
 
+<tbody>
 
-{% for s in students %}
+{% for student in students %}
 
 <tr>
 
-<td>{{s.StudentId}}</td>
+<td>{{ student[0] }}</td>
 
-<td>{{s.FullName}}</td>
+<td>{{ student[1] }}</td>
 
-<td>{{s.Email}}</td>
+<td>{{ student[2] }}</td>
 
-<td>{{s.Course}}</td>
+<td>{{ student[3] }}</td>
 
-<td>{{s.City}}</td>
+<td>{{ student[4] }}</td>
 
+<td>{{ student[5] }}</td>
 
 </tr>
 
 {% endfor %}
 
-
+</tbody>
 
 </table>
 
-
 </div>
 
+</section>
+
+<footer>
+
+<p>
+
+© 2026 Student Management Portal
+
+<br>
+
+Flask • Azure SQL • Azure App Service
+
+</p>
+
+</footer>
 
 </body>
-
 </html>
