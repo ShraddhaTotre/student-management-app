@@ -1,13 +1,15 @@
 from flask import Flask, render_template, request, redirect
 import pymssql
+import os
 
 app = Flask(__name__)
 
-# Azure SQL Database Details
-server = "studentserver12345.database.windows.net"
-database = "StudentDB"
-username = "shraddha"
-password = "#poonam2124"
+
+# Get Azure SQL Database details from Environment Variables
+server = os.environ.get("DB_SERVER")
+database = os.environ.get("DB_DATABASE")
+username = os.environ.get("DB_USERNAME")
+password = os.environ.get("DB_PASSWORD")
 
 
 def get_connection():
